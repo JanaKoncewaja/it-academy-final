@@ -1,6 +1,6 @@
-package com.it.academy.data.sensor;
+package com.it.academy.data.entity;
 
-import com.it.academy.domain.Device;
+
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.Objects;
 
 @MappedSuperclass
-public abstract class DeviceSensorEntity implements Serializable {
+public abstract class DeviceSensorEntity implements Serializable, MarkerInt {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "device_sensor_id")
     private Long id;
     @Column(name = "name")

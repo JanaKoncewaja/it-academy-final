@@ -10,7 +10,13 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <packaging>jar</packaging>
-
+<dependencies>
+    <dependency>
+        <groupId>com.it.academy</groupId>
+        <artifactId>it-academy-final-data</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </dependency>
+</dependencies>
     <artifactId>it-academy-final-domain</artifactId>
 
 </project>

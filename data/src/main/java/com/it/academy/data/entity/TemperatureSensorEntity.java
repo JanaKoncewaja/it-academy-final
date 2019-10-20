@@ -1,7 +1,7 @@
-package com.it.academy.data.sensor;
+package com.it.academy.data.entity;
 
 
-import com.it.academy.domain.Device;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +12,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "temperature_sensor")
-public class TemperatureSensorEntity extends DeviceSensorEntity implements Serializable {
+public class TemperatureSensorEntity extends DeviceSensorEntity implements Serializable,MarkerInt {
 
     private static final long serialVersionUID = 1L;
     @Column(name = "value")

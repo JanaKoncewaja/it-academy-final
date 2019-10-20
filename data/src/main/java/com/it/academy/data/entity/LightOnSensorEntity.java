@@ -1,6 +1,5 @@
-package com.it.academy.data.sensor;
+package com.it.academy.data.entity;
 
-import com.it.academy.domain.Device;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +10,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "light_on_sensor")
-public class LightOnSensorEntity extends DeviceSensorEntity implements Serializable {
+public class LightOnSensorEntity extends DeviceSensorEntity implements Serializable,MarkerInt {
     private static final long serialVersionUID = 1L;
     @Column(name = "value")
   private Boolean value;
