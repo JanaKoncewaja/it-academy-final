@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import static org.junit.Assert.*;
 
 public class DaoHibernateImplTest {
+    Session session;
     private Device device;
     private LightOnSensorEntity lightOnSensorEntity;
     public Device createTestDevice(){
@@ -31,25 +32,25 @@ public class DaoHibernateImplTest {
 
     @Test
     public void save() {
-        Session session;
-        Transaction tr=null;
-        session= HibernateUtil.getSessionFactory().openSession();
-        try {
-            tr=session.beginTransaction();
-new DaoHibernateImpl<>().save(createTestDevice());
-new DaoHibernateImpl<>().save(createTestLightSensor());
-            tr.commit();
-            session.close();
-        } catch (HibernateException e) {
-            if(tr!=null){
-                tr.rollback();
-                throw e;
-            }
+        new DaoHibernateImpl<>().save(createTestDevice());
+        new DaoHibernateImpl<>().save(createTestLightSensor());
         }
-    }
+
 
     @Test
     public void get() {
-
+        Device existing = createTestDevice();
+        new DaoHibernateImpl<>().save(existing);
+        Device expected = (Device) new DaoHibernateImpl<>().get(Device.class,(long)1);
+        assertEquals(expected, existing);
     }
+
+    @Test
+    public void delete() {
+        Device existing = createTestDevice();
+        new DaoHibernateImpl<>().save(existing);
+        new DaoHibernateImpl<>().delete(existing);
+        assertNull(new DaoHibernateImpl<>().get(Device.class, existing.getId()));
+    }
+
 }

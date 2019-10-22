@@ -4,6 +4,7 @@ import com.it.academy.domain.sensor.Sensor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Device {
 
@@ -44,5 +45,31 @@ public class Device {
         sensors.add(sensor);
     }
 
-    // equals, hashCode, toString
+    @Override
+    public String toString() {
+        return "Device{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", ip='" + ip + '\'' +
+                ", location='" + location + '\'' +
+                ", sensors=" + sensors +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Device device = (Device) o;
+        return Objects.equals(id, device.id) &&
+                Objects.equals(name, device.name) &&
+                Objects.equals(ip, device.ip) &&
+                Objects.equals(location, device.location) &&
+                Objects.equals(sensors, device.sensors);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, ip, location, sensors);
+    }
 }

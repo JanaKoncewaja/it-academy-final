@@ -7,8 +7,8 @@ import java.io.Serializable;
 public  interface Dao <T extends MarkerInt>{
 
     void save(T t);
-    <T>T get(Class<T> t,Long id);
-    void delete(Long id);
+   Object get(Class clazz,Long id);
+    void delete(T t);
     void update(T t);
 }
 

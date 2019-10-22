@@ -14,6 +14,12 @@ import java.util.logging.Logger;
 public class DaoHibernateImpl<T extends MarkerInt> implements Dao<T> {
     private static final Logger logger = Logger.getLogger(DaoHibernateImpl.class.getName());
 
+//    private Class<T> clazz;
+//
+//    public void setClazz(Class<T> clazz) {
+//        this.clazz = clazz;
+//    }
+
     private Session session;
 
 
@@ -39,47 +45,67 @@ public class DaoHibernateImpl<T extends MarkerInt> implements Dao<T> {
         }
     }
 
+
+
     @Override
-    public <T>T get(Class<T> t,Long id) {
-            Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-            return (T)session.get(t, id);
+    public Object get(Class clazz,Long id) {
+        Transaction tr = null;
+        session = HibernateUtil.getSessionFactory().openSession();
+        Object obj=null;
+        try {
+            tr = session.beginTransaction();
+           obj =session.get(clazz, id);
+            tr.commit();
+            session.close();
+        } catch (HibernateException e) {
+            logger.log(Level.INFO, e.getMessage());
+            if (tr != null) {
+                tr.rollback();
+                throw e;
+            }}
+return obj;
     }
 
 
     @Override
-    public void delete(Long id) {
-
+    public void delete(T t) {
+        Transaction tr = null;
+        session = HibernateUtil.getSessionFactory().openSession();
+        Object obj=null;
+        try {
+            tr = session.beginTransaction();
+            session.delete(t);
+            tr.commit();
+            session.close();
+        } catch (HibernateException e) {
+            logger.log(Level.INFO, e.getMessage());
+            if (tr != null) {
+                tr.rollback();
+                throw e;
+            }
+        }
     }
 
     @Override
     public void update(T t) {
+        Transaction tr = null;
+        session = HibernateUtil.getSessionFactory().openSession();
+        Object obj=null;
+        try {
+            tr = session.beginTransaction();
+            session.update(t);
+            tr.commit();
+            session.close();
+        } catch (HibernateException e) {
+            logger.log(Level.INFO, e.getMessage());
+            if (tr != null) {
+                tr.rollback();
+                throw e;
+             
+            }
+        }
 
     }
-
-//
-//    @Override
-//    public MarkerInt get(Long id) {
-//        Transaction tr=null;
-//        Session session = HibernateUtil.getSessionFactory().openSession();
-// try {
-//    tr =session.beginTransaction();
-//    session.get(MarkerInt.class.getName(),id);
-//    tr.commit();
-//    session.close();
-// }catch (HibernateException e){
-//     logger.log(Level.INFO, e.getMessage());
-// }
-//
-//        return null;
-//    }
-//
-//    @Override
-//    public void delete(Long id) {
-//
-//    }
-//
-//    @Override
-//    public void update(MarkerInt markerInt) {
-//
-//    }
 }
+
+

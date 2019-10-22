@@ -1,5 +1,7 @@
 package com.it.academy.domain.sensor;
 
+import java.util.Objects;
+
 public class LightOnSensor implements Sensor<Boolean> {
 
     private final Long id;
@@ -25,5 +27,30 @@ public class LightOnSensor implements Sensor<Boolean> {
     @Override
     public Boolean value() {
         return this.value;
+    }
+
+    @Override
+    public String
+    toString() {
+        return "LightOnSensor{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", value=" + value +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LightOnSensor that = (LightOnSensor) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(value, that.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, value);
     }
 }

@@ -5,6 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
+
         <groupId>com.it.academy</groupId>
         <artifactId>it-academy-final</artifactId>
         <version>1.0-SNAPSHOT</version>
@@ -13,6 +14,14 @@
 
     <artifactId>it-academy-final-service</artifactId>
 
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <file.encoding>UTF-8</file.encoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.version>5.2.0.RELEASE</spring.version>
+    </properties>
     <dependencies>
 
         <dependency>
@@ -25,6 +34,7 @@
             <artifactId>it-academy-final-data</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
 
     </dependencies>
 
