@@ -11,8 +11,8 @@
         <property name="show_sql">true</property>
         <property name="connection.pool_size">20</property>
        <property name="hibernate.hbm2ddl.auto">create</property>
-        <mapping class="com.it.academy.data.entity.Device"/>
-        <mapping class="com.it.academy.data.entity.DeviceSensorEntity"/>
+        <mapping class="com.it.academy.data.entity.DeviceEntity"/>
+        <mapping class="com.it.academy.data.entity.SensorEntity"/>
         <mapping class="com.it.academy.data.entity.LightOnSensorEntity"/>
         <mapping class="com.it.academy.data.entity.TemperatureSensorEntity"/>
 

@@ -8,21 +8,21 @@ import java.util.List;
 import java.util.Objects;
 
 @MappedSuperclass
-public abstract class DeviceSensorEntity implements Serializable, MarkerInt {
+public abstract class SensorEntity implements Serializable, MarkerInt {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "device_sensor_id")
+    @Column(name = "sensor_entity_id")
     private Long id;
     @Column(name = "name")
     private String name;
     @OneToMany(cascade = CascadeType.ALL)
-    List<Device> devices;
+    List<DeviceEntity> deviceEntities;
 
 
-    public DeviceSensorEntity(String name, List<Device> devices) {
+    public SensorEntity(String name, List<DeviceEntity> deviceEntities) {
         this.name = name;
-        this.devices = devices;
+        this.deviceEntities = deviceEntities;
     }
 
     public String getName() {
@@ -33,27 +33,27 @@ public abstract class DeviceSensorEntity implements Serializable, MarkerInt {
         this.name = name;
     }
 
-    public List<Device> getDevices() {
-        return devices;
+    public List<DeviceEntity> getDeviceEntities() {
+        return deviceEntities;
     }
 
-    public void setDevices(List<Device> devices) {
-        this.devices = devices;
+    public void setDeviceEntities(List<DeviceEntity> deviceEntities) {
+        this.deviceEntities = deviceEntities;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        DeviceSensorEntity that = (DeviceSensorEntity) o;
+        SensorEntity that = (SensorEntity) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(name, that.name) &&
-                Objects.equals(devices, that.devices);
+                Objects.equals(deviceEntities, that.deviceEntities);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, devices);
+        return Objects.hash(id, name, deviceEntities);
     }
 }
 

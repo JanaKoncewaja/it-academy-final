@@ -10,18 +10,18 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "light_on_sensor")
-public class LightOnSensorEntity extends DeviceSensorEntity implements Serializable,MarkerInt {
+public class LightOnSensorEntity extends SensorEntity implements Serializable,MarkerInt {
     private static final long serialVersionUID = 1L;
     @Column(name = "value")
   private Boolean value;
 
-    public LightOnSensorEntity(String name, List<Device> devices, Boolean value) {
-        super(name, devices);
+    public LightOnSensorEntity(String name, List<DeviceEntity> deviceEntities, Boolean value) {
+        super(name, deviceEntities);
         this.value = value;
     }
 
-    public LightOnSensorEntity(String name, List<Device> devices) {
-        super(name, devices);
+    public LightOnSensorEntity(String name, List<DeviceEntity> deviceEntities) {
+        super(name, deviceEntities);
     }
 
     public Boolean getValue() {

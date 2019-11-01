@@ -1,6 +1,8 @@
 package com.it.academy.data.dao;
 
 import com.it.academy.config.HibernateUtil;
+import com.it.academy.data.entity.DeviceEntity;
+import com.it.academy.data.entity.LightOnSensorEntity;
 import com.it.academy.data.entity.MarkerInt;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -12,16 +14,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DaoHibernateImpl<T extends MarkerInt> implements Dao<T> {
+
     private static final Logger logger = Logger.getLogger(DaoHibernateImpl.class.getName());
 
-//    private Class<T> clazz;
-//
-//    public void setClazz(Class<T> clazz) {
-//        this.clazz = clazz;
-//    }
-
     private Session session;
-
 
     @Override
     public void save(T t) {

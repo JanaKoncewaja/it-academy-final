@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "device")
-public  class Device implements Serializable,MarkerInt {
+public  class DeviceEntity implements Serializable,MarkerInt {
 
     private static final long serialVersionUID =1L;
     @Id
@@ -23,10 +23,10 @@ public  class Device implements Serializable,MarkerInt {
     @Column(name = "location")
     private String location;
 
-    public Device() {
+    public DeviceEntity() {
     }
 
-  public Device(String name, String ip, String location) {
+  public DeviceEntity(String name, String ip, String location) {
         this.name = name;
         this.ip = ip;
         this.location = location;
@@ -69,7 +69,7 @@ public  class Device implements Serializable,MarkerInt {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Device that = (Device) o;
+        DeviceEntity that = (DeviceEntity) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(ip, that.ip) &&

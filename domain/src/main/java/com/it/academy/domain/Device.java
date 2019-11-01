@@ -14,6 +14,8 @@ public class Device {
     private final String location;
     private final List<Sensor> sensors = new ArrayList<>(0);
 
+
+
     public Device(Long id, String name, String ip, String location) {
         this.id = id;
         this.name = name;
@@ -47,7 +49,7 @@ public class Device {
 
     @Override
     public String toString() {
-        return "Device{" +
+        return "DeviceEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", ip='" + ip + '\'' +
