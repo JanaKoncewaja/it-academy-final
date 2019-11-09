@@ -58,8 +58,6 @@
             <version>${spring.version}</version>
         </dependency>
 
-
-
         <dependency>
             <groupId>javax.inject</groupId>
             <artifactId>javax.inject</artifactId>
@@ -127,18 +125,10 @@
     </dependencies>
     <build>
     <plugins>
-    <plugin>
-    <groupId>org.liquibase</groupId>
-    <artifactId>liquibase-maven-plugin</artifactId>
-    <version>3.5.3</version>
-    <executions>
-    <execution>
-        <id>create_database</id>
-        <goals>
-            <goal>update</goal>
-        </goals>
-
-        <phase>process-sources</phase>
+        <plugin>
+        <groupId>org.liquibase</groupId>
+        <artifactId>liquibase-maven-plugin</artifactId>
+        <version>3.5.3</version>
         <configuration>
             <changeLogFile>src/main/resources/changeLog.xml</changeLogFile>
             <url>jdbc:mysql://localhost:3306/com_it_academy?createDatabaseIfNotExist=true&amp;useSSL=false</url>
@@ -146,9 +136,16 @@
             <password>root</password>
             <driver>com.mysql.jdbc.Driver</driver>
         </configuration>
-    </execution>
-    </executions>
-    </plugin>
+        <executions>
+            <execution>
+                <id>liquibase</id>
+                <goals>
+                    <goal>update</goal>
+                </goals>
+                <phase>process-resources</phase>
+            </execution>
+        </executions>
+        </plugin>
     </plugins>
     </build>
 </project>

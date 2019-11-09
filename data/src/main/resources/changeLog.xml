@@ -6,65 +6,61 @@
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
    http://www.liquibase.org/xml/ns/dbchangelog
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
     <changeSet id="5" author="jana">
-        <createTable tableName="device">
-            <column name = "device_id" type="int" ><constraints nullable="false" />
-            </column>
-            <column name="name" type="varchar(50)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="ip" type="varchar(50)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="location" type="varchar(50)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
+        <sql>
+            create table device(
+                id int primary key auto_increment,
+                name varchar(50),
+                ip varchar(50),
+                location varchar(50)
+            )
+        </sql>
     </changeSet>
+
     <changeSet id="6" author="jana">
-        <createTable tableName="light_on_sensor">
-            <column name="device_sensor_id" type="int">
-                <constraints nullable="false"/>
-            </column>
-            <column name="name" type="varchar(50)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="value" type="boolean">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
+        <sql>
+            create table light_on_sensor(
+                id int primary key auto_increment,
+                name varchar(50),
+                value boolean,
+                device_id int,
+                constraint fk__light_on_sensor__device foreign key (device_id) references device(id)
+            )
+        </sql>
     </changeSet>
-    <changeSet id="7" author="jana">
-        <createTable tableName="temperature_sensor">
-            <column name="device_sensor_id" type="int">
-                <constraints nullable="false"/>
-            </column>
-            <column name="name" type="varchar(50)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="value" type="double">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet id="8" author="jana">
-        <createTable tableName="light_on_sensor_device">
-            <column name="LightOnSensorEntity_device_sensor_id" type="int">
-                <constraints nullable="false"/>
-            </column>
-            <column name="devices_device_id" type="int">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet id="9" author="jana">
-        <createTable tableName="temperature_sensor_device">
-            <column name="TemperatureSensorEntity_device_sensor_id" type="int">
-                <constraints nullable="false"/>
-            </column>
-            <column name="devices_device_id" type="int">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
+
+    <!--<changeSet id="7" author="jana">-->
+        <!--<createTable tableName="temperature_sensor">-->
+            <!--<column name="device_sensor_id" type="int">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="name" type="varchar(50)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="value" type="double">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+        <!--</createTable>-->
+    <!--</changeSet>-->
+    <!--<changeSet id="8" author="jana">-->
+        <!--<createTable tableName="light_on_sensor_device">-->
+            <!--<column name="LightOnSensorEntity_device_sensor_id" type="int">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="devices_device_id" type="int">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+        <!--</createTable>-->
+    <!--</changeSet>-->
+    <!--<changeSet id="9" author="jana">-->
+        <!--<createTable tableName="temperature_sensor_device">-->
+            <!--<column name="TemperatureSensorEntity_device_sensor_id" type="int">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="devices_device_id" type="int">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+        <!--</createTable>-->
+    <!--</changeSet>-->
 </databaseChangeLog>

@@ -1,4 +1,6 @@
 package com.it.academy.data.entity;
 
-public interface MarkerInt {
+import java.io.Serializable;
+
+public interface MarkerInt extends Serializable {
 }

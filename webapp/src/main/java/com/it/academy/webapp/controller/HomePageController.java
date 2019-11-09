@@ -1,4 +1,4 @@
-package com.it.academy.webapp;
+package com.it.academy.webapp.controller;
 
 
 import org.springframework.stereotype.Controller;
@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.logging.Logger;
 
 @Controller
-@RequestMapping("/home")
 public class HomePageController {
 
     Logger log = Logger.getLogger("HomePageController");
-    @RequestMapping (method = RequestMethod.GET)
+  @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String showTheHomePage(){
 
 log.info("Showing the homepage");

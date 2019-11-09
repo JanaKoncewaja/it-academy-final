@@ -4,12 +4,10 @@ import com.it.academy.config.HibernateUtil;
 import com.it.academy.data.entity.DeviceEntity;
 import com.it.academy.data.entity.LightOnSensorEntity;
 import com.it.academy.data.entity.MarkerInt;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,13 +18,14 @@ public class DaoHibernateImpl<T extends MarkerInt> implements Dao<T> {
     private Session session;
 
     @Override
-    public void save(T t) {
+    public Long save(T t) {
         Transaction tr = null;
+        Serializable id = null;
         session = HibernateUtil.getSessionFactory().openSession();
         if (t != null) {
             try {
                 tr = session.beginTransaction();
-                session.save(t);
+                id = session.save(t);
                 tr.commit();
                 session.close();
             } catch (HibernateException e) {
@@ -39,15 +38,14 @@ public class DaoHibernateImpl<T extends MarkerInt> implements Dao<T> {
         } else {
             throw new IllegalArgumentException();
         }
+        return (Long) id;
     }
 
-
-
     @Override
-    public Object get(Class clazz,Long id) {
+    public T get(Class<T> clazz,Long id) {
         Transaction tr = null;
         session = HibernateUtil.getSessionFactory().openSession();
-        Object obj=null;
+        T obj=null;
         try {
             tr = session.beginTransaction();
            obj =session.get(clazz, id);
@@ -59,9 +57,27 @@ public class DaoHibernateImpl<T extends MarkerInt> implements Dao<T> {
                 tr.rollback();
                 throw e;
             }}
-return obj;
+        return obj;
     }
 
+    @Override
+    public T get(String sql, Class<T> clazz) {
+        Transaction tr = null;
+        session = HibernateUtil.getSessionFactory().openSession();
+        T obj=null;
+        try {
+            tr = session.beginTransaction();
+            obj = session.createQuery(sql, clazz).uniqueResult();
+            tr.commit();
+            session.close();
+        } catch (HibernateException e) {
+            logger.log(Level.INFO, e.getMessage());
+            if (tr != null) {
+                tr.rollback();
+                throw e;
+            }}
+        return obj;
+    }
 
     @Override
     public void delete(T t) {
@@ -101,6 +117,25 @@ return obj;
             }
         }
 
+    }
+
+    @Override
+    public List<T> getAll(String sql, Class<T> clazz) {
+        Transaction tr = null;
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<T> list =null;
+        try {
+            tr = session.beginTransaction();
+            list = session.createQuery(sql, clazz).setMaxResults(10).list();
+            tr.commit();
+            session.close();
+        } catch (HibernateException e) {
+            logger.log(Level.INFO, e.getMessage());
+            if (tr != null) {
+                tr.rollback();
+                throw e;
+            }}
+        return list;
     }
 }
 

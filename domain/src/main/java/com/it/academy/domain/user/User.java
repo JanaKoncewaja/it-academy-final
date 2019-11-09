@@ -10,7 +10,7 @@ public class User {
     private final String email;
 
     public User(Long id, String username, String password, String email) {
-        this.id = id;
+        this.id = Objects.requireNonNull(id, "id cannot be null");
         this.username = username;
         this.password = password;
         this.email = email;
@@ -37,20 +37,17 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) &&
-                Objects.equals(username, user.username) &&
-                Objects.equals(password, user.password) &&
-                Objects.equals(email, user.email);
+        return Objects.equals(id, user.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, password, email);
+        return Objects.hash(id);
     }
 
     @Override
     public String toString() {
-        return "UserEntity{" +
+        return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +

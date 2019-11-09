@@ -14,10 +14,8 @@ public class Device {
     private final String location;
     private final List<Sensor> sensors = new ArrayList<>(0);
 
-
-
     public Device(Long id, String name, String ip, String location) {
-        this.id = id;
+        this.id = Objects.requireNonNull(id, "id cannot be null");
         this.name = name;
         this.ip = ip;
         this.location = location;
@@ -49,7 +47,7 @@ public class Device {
 
     @Override
     public String toString() {
-        return "DeviceEntity{" +
+        return "Device{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", ip='" + ip + '\'' +
@@ -63,15 +61,11 @@ public class Device {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Device device = (Device) o;
-        return Objects.equals(id, device.id) &&
-                Objects.equals(name, device.name) &&
-                Objects.equals(ip, device.ip) &&
-                Objects.equals(location, device.location) &&
-                Objects.equals(sensors, device.sensors);
+        return Objects.equals(id, device.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, ip, location, sensors);
+        return Objects.hash(id);
     }
 }

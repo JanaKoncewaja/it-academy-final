@@ -1,8 +1,8 @@
-package com.it.academy.webapp;
+package com.it.academy.webapp.controller;
+import com.it.academy.domain.Device;
+import com.it.academy.service.DeviceService;
 import com.it.academy.service.catalog.DeviceCatalogService;
 import com.it.academy.data.entity.DeviceEntity;
-
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,17 +14,17 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @Controller
-public class CatalogPageController {
+public class DeviceCatalogPageController {
 
-private static Logger logger = Logger.getLogger("CatalogPageController");
+private static Logger logger = Logger.getLogger("DeviceCatalogPageController");
 
-   @Autowired
+  @Autowired
    DeviceCatalogService deviceCatalogService;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String showTheHomePage(Model model){
+    @RequestMapping(value = "/catalogPage",method = RequestMethod.GET)
+    public String showTheCatalogPage(Model model){
         logger.info("Showing the catalog page");
-        List<DeviceEntity> devices = deviceCatalogService.getAllDevices();
+        List<Device> devices = deviceCatalogService.getAllDevices();
         model.addAttribute("devices", devices);
         return "catalogPage";
     }

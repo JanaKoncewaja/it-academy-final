@@ -9,7 +9,7 @@ public class LightOnSensor implements Sensor<Boolean> {
     private final Boolean value;
 
     public LightOnSensor(Long id, String name, Boolean value) {
-        this.id = id;
+        this.id = Objects.requireNonNull(id, "id cannot be null");
         this.name = name;
         this.value = value;
     }
@@ -44,13 +44,11 @@ public class LightOnSensor implements Sensor<Boolean> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LightOnSensor that = (LightOnSensor) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(value, that.value);
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, value);
+        return Objects.hash(id);
     }
 }

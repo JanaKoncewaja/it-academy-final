@@ -8,10 +8,9 @@ import java.util.Objects;
 @Table(name = "device")
 public  class DeviceEntity implements Serializable,MarkerInt {
 
-    private static final long serialVersionUID =1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "device_id")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "name")
@@ -63,7 +62,6 @@ public  class DeviceEntity implements Serializable,MarkerInt {
     public void setLocation(String location) {
         this.location = location;
     }
-
 
     @Override
     public boolean equals(Object o) {

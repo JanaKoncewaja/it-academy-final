@@ -8,5 +8,4 @@
 
 </div>
 <div class="shadow-lg p-3 mb-5 bg-white rounded">
-<h2 align= "center">You can get here all information about available devices and sensors</h2>
 </div>

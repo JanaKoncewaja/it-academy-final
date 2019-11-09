@@ -8,8 +8,6 @@ import java.util.Objects;
 @Table(name = "user")
 public class UserEntity implements Serializable {
 
-    private static final long serialVersionUID =1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
@@ -23,7 +21,6 @@ public class UserEntity implements Serializable {
 
     @Column(name = "email")
     private String email;
-
 
     public UserEntity() {
     }

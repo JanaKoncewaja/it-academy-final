@@ -9,7 +9,7 @@ public class TemperatureSensor implements Sensor<Double> {
     private final Double value;
 
     public TemperatureSensor(Long id, String name, Double value) {
-        this.id = id;
+        this.id = Objects.requireNonNull(id, "id cannot be null");
         this.name = name;
         this.value = value;
     }
@@ -43,13 +43,11 @@ public class TemperatureSensor implements Sensor<Double> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TemperatureSensor that = (TemperatureSensor) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(value, that.value);
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, value);
+        return Objects.hash(id);
     }
 }

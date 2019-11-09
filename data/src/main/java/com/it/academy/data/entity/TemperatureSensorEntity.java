@@ -12,18 +12,18 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "temperature_sensor")
-public class TemperatureSensorEntity extends SensorEntity implements Serializable,MarkerInt {
+public class TemperatureSensorEntity extends AbstractSensorEntity implements Serializable,MarkerInt {
 
     private static final long serialVersionUID = 1L;
     @Column(name = "value")
     private Double value;
 
-    public TemperatureSensorEntity(String name, List<DeviceEntity> deviceEntities) {
-        super(name, deviceEntities);
+    public TemperatureSensorEntity(String name, DeviceEntity device) {
+        super(name, device);
     }
 
-    public TemperatureSensorEntity(String name, List<DeviceEntity> deviceEntities, Double value) {
-        super(name, deviceEntities);
+    public TemperatureSensorEntity(String name, DeviceEntity device, Double value) {
+        super(name, device);
         this.value = value;
     }
 

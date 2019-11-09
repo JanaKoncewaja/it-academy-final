@@ -1,16 +1,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="header.jsp"/>
-<div class="card mb-3" style="max-width: 540px;">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <img src="..." class="card-img" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-  </div>
-</div>
+<table class="table table-dark">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Ip</th>
+      <th scope="col">Location</th>
+    </tr>
+  </thead>
+  <tbody>
+   <c:forEach var="device" items="${devices}">
+    <tr>
+      <th scope="row">${device.id}</th>
+      <td><a href="${pageContext.request.contextPath}/devicePage">${device.name}</a></td>
+      <td><a href="${pageContext.request.contextPath}/devicePage">${device.ip}</a></td>
+      <td><a href="${pageContext.request.contextPath}/devicePage">${device.location}</a></td>
+    </tr>
+   </c:forEach>
+ </tbody>
+</table>
+<jsp:include page="footer.jsp"/>

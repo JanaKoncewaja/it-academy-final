@@ -13,14 +13,33 @@
 
     <artifactId>it-academy-final-webapp</artifactId>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${springboot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <file.encoding>UTF-8</file.encoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>5.1.9.RELEASE</spring.version>
+        <springboot.version>2.1.8.RELEASE</springboot.version>
     </properties>
 <dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-jpa</artifactId>
+        <version>${springboot.version}</version>
+    </dependency>
+
     <dependency>
         <groupId>com.it.academy</groupId>
         <artifactId>it-academy-final-data</artifactId>
@@ -133,6 +152,17 @@
         <version>2.7.0</version>
         <!--<scope>compile</scope>-->
     </dependency>
+    <!--<dependency>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+        <!--<scope>provided</scope>-->
+    <!--</dependency>-->
+
+    <dependency>
+        <groupId>org.apache.tomcat.embed</groupId>
+        <artifactId>tomcat-embed-jasper</artifactId>
+        <scope>provided</scope>
+    </dependency>
     <dependency>
         <groupId>commons-fileupload</groupId>
         <artifactId>commons-fileupload</artifactId>
@@ -154,21 +184,31 @@
         <artifactId>istack-commons-runtime</artifactId>
         <version>3.0.8</version>
     </dependency>
-
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter</artifactId>
+        <version>${springboot.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <version>${springboot.version}</version>
+    </dependency>
 </dependencies>
+
 
 
     <build>
     <plugins>
-        <plugin>
-            <groupId>org.apache.tomcat.maven</groupId>
-            <artifactId>tomcat7-maven-plugin</artifactId>
-            <version>2.2</version>
-            <configuration>
-                <username>tomcat</username>
-                <password>tomcat</password>
-            </configuration>
-        </plugin>
+        <!--<plugin>-->
+            <!--<groupId>org.apache.tomcat.maven</groupId>-->
+            <!--<artifactId>tomcat7-maven-plugin</artifactId>-->
+            <!--<version>2.2</version>-->
+            <!--<configuration>-->
+                <!--<username>tomcat</username>-->
+                <!--<password>tomcat</password>-->
+            <!--</configuration>-->
+        <!--</plugin>-->
     <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
@@ -176,19 +216,28 @@
         <configuration>
             <attachClasses>true</attachClasses>
             <classesClassifier>classes</classesClassifier>
-
-
-
         </configuration>
-        <!--<configuration>-->
-            <!--<failOnMissingWebXml>false</failOnMissingWebXml>-->
-        <!--</configuration>-->
     </plugin>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.8.1</version>
 
+        </plugin>
+
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <configuration>
+                <mainClass>com.it.academy.webapp.SpringBootApplication2</mainClass>
+            </configuration>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>repackage</goal>
+                    </goals>
+                </execution>
+            </executions>
         </plugin>
     </plugins>
     </build>

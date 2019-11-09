@@ -1,6 +1,5 @@
 package com.it.academy.data.entity;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -10,18 +9,22 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "light_on_sensor")
-public class LightOnSensorEntity extends SensorEntity implements Serializable,MarkerInt {
-    private static final long serialVersionUID = 1L;
-    @Column(name = "value")
-  private Boolean value;
+public class LightOnSensorEntity extends AbstractSensorEntity implements Serializable,MarkerInt {
 
-    public LightOnSensorEntity(String name, List<DeviceEntity> deviceEntities, Boolean value) {
-        super(name, deviceEntities);
+    @Column(name = "value")
+    private Boolean value;
+
+    public LightOnSensorEntity() {
+
+    }
+
+    public LightOnSensorEntity(String name, DeviceEntity device, Boolean value) {
+        super(name, device);
         this.value = value;
     }
 
-    public LightOnSensorEntity(String name, List<DeviceEntity> deviceEntities) {
-        super(name, deviceEntities);
+    public LightOnSensorEntity(String name, DeviceEntity device) {
+        super(name, device);
     }
 
     public Boolean getValue() {
