@@ -1,3 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"></link>
 <!doctype html>
 <html lang="en">
   <head>
@@ -8,9 +12,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Welcome!</title>
+    <title>Hello, world!</title>
   </head>
-
+<body>
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Menu</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +33,8 @@
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <a class="dropdown-item" href="${pageContext.request.contextPath}/catalogPage">Device catalog</a>
-        <a class="dropdown-item" href="${pageContext.request.contextPath}/catalogOfSensorsPage">Sensors catalog</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/catalogOfLightOnSensorsPage">Light-On sensors catalog</a>
+                <a class="dropdown-item" href="${pageContext.request.contextPath}/catalogOfTemperatureSensorsPage">Temperature sensors catalog</a>
       </div>
     </div>
       <li class="nav-item">
@@ -43,4 +48,3 @@
     </form>
   </div>
 </nav>
-<jsp:include page="footer.jsp"/>

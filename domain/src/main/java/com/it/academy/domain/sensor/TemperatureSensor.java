@@ -2,7 +2,7 @@ package com.it.academy.domain.sensor;
 
 import java.util.Objects;
 
-public class TemperatureSensor implements Sensor<Double> {
+public class TemperatureSensor extends Sensor<Double> {
 
     private final Long id;
     private final String name;
@@ -14,19 +14,16 @@ public class TemperatureSensor implements Sensor<Double> {
         this.value = value;
     }
 
-    @Override
-    public Long id() {
-        return null;
+    public Long getId() {
+        return id;
     }
 
-    @Override
-    public String name() {
-        return null;
+    public String getName() {
+        return name;
     }
 
-    @Override
-    public Double value() {
-        return null;
+    public Double getValue() {
+        return value;
     }
 
     @Override

@@ -8,8 +8,8 @@ public class TemperatureSensoreDao extends DaoHibernateImpl<TemperatureSensorEnt
 
     private final DaoHibernateImpl<TemperatureSensorEntity> dao=new DaoHibernateImpl<>();
 
-    @Override
-    public List<TemperatureSensorEntity> getAll(String sql, Class<TemperatureSensorEntity> clazz) {
+
+    public List<TemperatureSensorEntity> getAll() {
         return dao.getAll("from TemperatureSensorEntity", TemperatureSensorEntity.class);
     }
 

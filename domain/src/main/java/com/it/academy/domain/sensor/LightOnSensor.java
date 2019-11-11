@@ -2,7 +2,12 @@ package com.it.academy.domain.sensor;
 
 import java.util.Objects;
 
-public class LightOnSensor implements Sensor<Boolean> {
+public class LightOnSensor extends Sensor<Boolean> implements Comparable {
+
+    @Override
+    public int compareTo(Object o) {
+        return 0; //todo
+    }
 
     private final Long id;
     private final String name;
@@ -14,19 +19,16 @@ public class LightOnSensor implements Sensor<Boolean> {
         this.value = value;
     }
 
-    @Override
-    public Long id() {
-        return this.id;
+    public Long getId() {
+        return id;
     }
 
-    @Override
-    public String name() {
-        return this.name;
+    public String getName() {
+        return name;
     }
 
-    @Override
-    public Boolean value() {
-        return this.value;
+    public Boolean getValue() {
+        return value;
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.it.academy.webapp;
 
 import com.it.academy.data.dao.DeviceDao;
 import com.it.academy.data.dao.LightOnSensorDao;
+import com.it.academy.data.dao.TemperatureSensoreDao;
 import com.it.academy.domain.sensor.LightOnSensor;
 import com.it.academy.service.DeviceService;
 import com.it.academy.service.LightOnSensorService;
@@ -33,6 +34,11 @@ public class SpringBootApplication2 extends SpringBootServletInitializer {
     }
 
     @Bean
+    TemperatureSensoreDao temperatureSensoreDao(){
+        return new TemperatureSensoreDao(); }
+
+
+    @Bean
     DeviceDao deviceDao(){
         return new DeviceDao();
     }
@@ -44,7 +50,7 @@ public class SpringBootApplication2 extends SpringBootServletInitializer {
 
     @Bean
     LightOnSensorService lightOnSensorService(){
-        return new LightOnSensorService();
+        return new LightOnSensorService(lightOnSensorDao());
     }
 
  @Bean

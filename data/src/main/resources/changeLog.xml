@@ -29,38 +29,16 @@
             )
         </sql>
     </changeSet>
+<changeSet id="8" author="jana">
+    <sql>
+        create table temperature_sensor(
+        id int primary key auto_increment,
+        name varchar(50),
+        value real,
+        device_id int,
+        constraint fk__temperature_sensor__device foreign key (device_id) references device(id)
+        )
+    </sql>
+</changeSet>
 
-    <!--<changeSet id="7" author="jana">-->
-        <!--<createTable tableName="temperature_sensor">-->
-            <!--<column name="device_sensor_id" type="int">-->
-                <!--<constraints nullable="false"/>-->
-            <!--</column>-->
-            <!--<column name="name" type="varchar(50)">-->
-                <!--<constraints nullable="false"/>-->
-            <!--</column>-->
-            <!--<column name="value" type="double">-->
-                <!--<constraints nullable="false"/>-->
-            <!--</column>-->
-        <!--</createTable>-->
-    <!--</changeSet>-->
-    <!--<changeSet id="8" author="jana">-->
-        <!--<createTable tableName="light_on_sensor_device">-->
-            <!--<column name="LightOnSensorEntity_device_sensor_id" type="int">-->
-                <!--<constraints nullable="false"/>-->
-            <!--</column>-->
-            <!--<column name="devices_device_id" type="int">-->
-                <!--<constraints nullable="false"/>-->
-            <!--</column>-->
-        <!--</createTable>-->
-    <!--</changeSet>-->
-    <!--<changeSet id="9" author="jana">-->
-        <!--<createTable tableName="temperature_sensor_device">-->
-            <!--<column name="TemperatureSensorEntity_device_sensor_id" type="int">-->
-                <!--<constraints nullable="false"/>-->
-            <!--</column>-->
-            <!--<column name="devices_device_id" type="int">-->
-                <!--<constraints nullable="false"/>-->
-            <!--</column>-->
-        <!--</createTable>-->
-    <!--</changeSet>-->
 </databaseChangeLog>
