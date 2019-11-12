@@ -14,7 +14,6 @@ import java.util.Objects;
 @Table(name = "temperature_sensor")
 public class TemperatureSensorEntity extends AbstractSensorEntity implements Serializable,MarkerInt {
 
-    private static final long serialVersionUID = 1L;
     @Column(name = "value")
     private Double value;
 
@@ -26,6 +25,10 @@ public class TemperatureSensorEntity extends AbstractSensorEntity implements Ser
         super(name, device);
         this.value = value;
     }
+
+    public TemperatureSensorEntity() {
+    }
+
 
     public Double getValue() {
         return value;

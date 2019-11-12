@@ -26,6 +26,9 @@
       <li class="nav-item active">
         <a class="nav-link" href="${pageContext.request.contextPath}/home">Home <span class="sr-only">(current)</span></a>
       </li>
+       <li class="nav-item active">
+              <a class="nav-link" href="${pageContext.request.contextPath}/addProduct">Add product<span class="sr-only">(current)</span></a>
+            </li>
 
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

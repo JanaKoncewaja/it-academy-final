@@ -22,4 +22,18 @@ public class TemperatureCatalogPageController {
         model.addAttribute("temperatureSensors",temperatureSensors);
         return "catalogOfTemperatureSensorsPage";
     }
+
+    @RequestMapping(value = "catalogOfTemperatureSensorsPage/sortedTemperatureSensors")
+    public String showSortedSensors(Model model){
+        List<TemperatureSensor> sortedTemperatureSensors = sensorCatalogService.getSortedTemperatureSensors();
+        model.addAttribute("sortedTemperatureSensors",sortedTemperatureSensors);
+        return "sortedTemperatureSensors";
+    }
+
+    @RequestMapping(value = "catalogOfTemperatureSensorsPage/sortedByValueTemperatureSensors")
+        public String showSortedByValueTemperatureSensors(Model model){
+        List<TemperatureSensor> sortedByValueTemperatureSensors =sensorCatalogService.getSortedByValueTempSens();
+        model.addAttribute("sortedByValueTemperatureSensors",sortedByValueTemperatureSensors);
+        return "sortedByValueTemperatureSensors";
+    }
 }

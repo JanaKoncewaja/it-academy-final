@@ -2,12 +2,7 @@ package com.it.academy.domain.sensor;
 
 import java.util.Objects;
 
-public class LightOnSensor extends Sensor<Boolean> implements Comparable {
-
-    @Override
-    public int compareTo(Object o) {
-        return 0; //todo
-    }
+public class LightOnSensor extends Sensor<Boolean>  {
 
     private final Long id;
     private final String name;

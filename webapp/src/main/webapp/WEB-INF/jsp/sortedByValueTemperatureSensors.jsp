@@ -9,11 +9,11 @@
       </tr>
   </thead>
   <tbody>
-   <c:forEach var="sortedTemperatureSensor" items="${sortedTemperatureSensors}">
+   <c:forEach var="sortedByValueTemperatureSensor" items="${sortedByValueTemperatureSensors}">
     <tr>
-      <th scope="row">${sortedTemperatureSensor.id}</th>
-      <td><a href="#">${sortedTemperatureSensor.name}</a></td>
-      <td><a href="#">${sortedTemperatureSensor.value}</a></td>
+      <th scope="row">${sortedByValueTemperatureSensor.id}</th>
+      <td><a href="#">${sortedByValueTemperatureSensor.name}</a></td>
+      <td><a href="#">${sortedByValueTemperatureSensor.value}</a></td>
        </tr>
    </c:forEach>
  </tbody>

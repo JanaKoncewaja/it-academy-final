@@ -11,5 +11,6 @@ public class DeviceDao extends DaoHibernateImpl<DeviceEntity> {
     public List<DeviceEntity> getAll() {
 
         return dao.getAll("from DeviceEntity", DeviceEntity.class);
+
     }
 }

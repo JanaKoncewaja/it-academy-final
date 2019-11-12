@@ -1,5 +1,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="header.jsp"/>
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   Sort
+  </button>
+  <body>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="${pageContext.request.contextPath}/catalogOfTemperatureSensorsPage/sortedTemperatureSensors"">Sort by name</a>
+    <a class="dropdown-item" href="${pageContext.request.contextPath}/catalogOfTemperatureSensorsPage/sortedByValueTemperatureSensors"">Sort by value</a>
+  </div>
+</div>
+
 <table class="table table-dark">
   <thead class="thead-light">
     <tr>

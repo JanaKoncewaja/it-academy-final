@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="header.jsp"/>
 <div class="jumbotron">
   <h1 class="display-4"Welcome!</h1>
@@ -9,3 +10,4 @@
 </div>
 <div class="shadow-lg p-3 mb-5 bg-white rounded">
 </div>
+<jsp:include page="footer.jsp"/>

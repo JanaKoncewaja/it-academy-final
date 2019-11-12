@@ -1,12 +1,10 @@
 package com.it.academy.service;
 
 import com.it.academy.domain.sensor.LightOnSensor;
-import com.it.academy.domain.sensor.Sensor;
 import com.it.academy.domain.sensor.TemperatureSensor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,6 +28,12 @@ public class SensorCatalogService {
         return temperatureSensorService.getAll();
     }
 
-    public List<LightOnSensor> getSortedSensors() { return lightOnSensorService.getSortedSensors();
+    public List<LightOnSensor> getSortedLightOnSensors() { return lightOnSensorService.getSortedLightOnSensorsSensors();
+    }
+
+    public List<TemperatureSensor> getSortedTemperatureSensors() { return temperatureSensorService.getSortedTemperatureSensors();
+    }
+
+    public List<TemperatureSensor> getSortedByValueTempSens() { return temperatureSensorService.getSortedByValueTempSens();
     }
 }

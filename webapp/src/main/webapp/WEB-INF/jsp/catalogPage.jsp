@@ -13,9 +13,9 @@
    <c:forEach var="device" items="${devices}">
     <tr>
       <th scope="row">${device.id}</th>
-      <td><a href="${pageContext.request.contextPath}/devicePage">${device.name}</a></td>
-      <td><a href="${pageContext.request.contextPath}/devicePage">${device.ip}</a></td>
-      <td><a href="${pageContext.request.contextPath}/devicePage">${device.location}</a></td>
+      <td><a href="#">${device.name}</a></td>
+      <td><a href="#">${device.ip}</a></td>
+      <td><a href="#">${device.location}</a></td>
     </tr>
    </c:forEach>
  </tbody>

@@ -11,9 +11,28 @@
   <c:forEach var="device" items="${devices}">
     <tr>
       <th scope="row">${device.id}</th>
-      <td><a href="${pageContext.request.contextPath}/devicePage">${device.name}</a></td>
+      <td><a href="#">${device.name}</a></td>
+      <td><a href="#">${device.ip}</a></td>
     </tr>
       </c:forEach>
   </tbody>
+  <tbody>
+    <c:forEach var="lightOnSensor" items="${lightOnSensors}">
+      <tr>
+        <th scope="row">${lightOnSensor.id}</th>
+        <td><a href="#">${lightOnSensor.name}</a></td>
+        <td><a href="#">${temperatureSensor.value}</a></td>
+      </tr>
+        </c:forEach>
+    </tbody>
+      <tbody>
+        <c:forEach var="temperatureSensor" items="${temperatureSensors}">
+          <tr>
+            <th scope="row">${temperatureSensor.id}</th>
+            <td><a href="#">${temperatureSensor.name}</a></td>
+            <td><a href="#">${temperatureSensor.value}</a></td>
+          </tr>
+            </c:forEach>
+        </tbody>
 </table>
 <jsp:include page="footer.jsp"/>

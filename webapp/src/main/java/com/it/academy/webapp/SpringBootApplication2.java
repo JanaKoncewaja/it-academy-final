@@ -6,6 +6,7 @@ import com.it.academy.data.dao.TemperatureSensoreDao;
 import com.it.academy.domain.sensor.LightOnSensor;
 import com.it.academy.service.DeviceService;
 import com.it.academy.service.LightOnSensorService;
+import com.it.academy.service.TemperatureSensorService;
 import com.it.academy.service.catalog.DeviceCatalogService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -53,11 +54,19 @@ public class SpringBootApplication2 extends SpringBootServletInitializer {
         return new LightOnSensorService(lightOnSensorDao());
     }
 
- @Bean
-   DeviceCatalogService deviceCatalogService(){
-     return new DeviceCatalogService(deviceService(),lightOnSensorService());
+    @Bean
+    TemperatureSensorService temperatureSensorService(){ return new TemperatureSensorService(temperatureSensoreDao());}
 
-   }
+    @Bean
+   DeviceCatalogService deviceCatalogService(){
+     return new DeviceCatalogService(deviceService(),lightOnSensorService(),temperatureSensorService());
+    }
+
+
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 
 
 

@@ -2,10 +2,7 @@ package com.it.academy.webapp.controller;
 
 
 import com.it.academy.domain.sensor.LightOnSensor;
-import com.it.academy.domain.sensor.Sensor;
-import com.it.academy.domain.sensor.TemperatureSensor;
 import com.it.academy.service.SensorCatalogService;
-import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +26,7 @@ public class LightOnSensorsCatalogController {
 
     @RequestMapping(value = "catalogOfLightOnSensorsPage/sortedLightOnSensors")
     public String showSortedSensors(Model model){
-        List<LightOnSensor> sortedLightOnSensors = sensorCatalogService.getSortedSensors();
+        List<LightOnSensor> sortedLightOnSensors = sensorCatalogService.getSortedLightOnSensors();
         model.addAttribute("sortedLightOnSensors",sortedLightOnSensors);
         return "sortedLightOnSensors";
     }
