@@ -17,6 +17,13 @@
             )
         </sql>
     </changeSet>
+    <changeSet id="5.1" author="jana">
+        <sql>
+            insert into device(name, ip, location) values
+                ('Lamp', '192.168.100.23', 'Kitchen'),
+                ('Laptop', '192.168.100.56', 'Guest Hall')
+        </sql>
+    </changeSet>
 
     <changeSet id="6" author="jana">
         <sql>
@@ -27,6 +34,17 @@
                 device_id int,
                 constraint fk__light_on_sensor__device foreign key (device_id) references device(id)
             )
+        </sql>
+    </changeSet>
+    <changeSet id="6.1" author="jana">
+        <sql>
+            set @lampId := (select id from device where name = 'Lamp' and location = 'Kitchen');
+            set @laptopId := (select id from device where name = 'Laptop' and location = 'Guest Hall');
+
+            insert into light_on_sensor(name, value, device_id) values
+            ('Laptop light-on sensor', false, @laptopId),
+            ('Lamp light-on sensor', false, @lampId)
+            ;
         </sql>
     </changeSet>
 <changeSet id="8" author="jana">
@@ -40,5 +58,49 @@
         )
     </sql>
 </changeSet>
+    <changeSet id="8.1" author="jana">
+        <sql>
+            set @laptopId := (select id from device where name = 'Laptop' and location = 'Guest Hall');
 
+            insert into temperature_sensor(name, value, device_id) values
+                ('Laptop temperature sensor', 50.6, @laptopId)
+            ;
+        </sql>
+    </changeSet>
+
+    <changeSet id="14" author="jana">
+        <sql>
+            create table if not exists `approle` (
+            `approle_id` integer not null primary key auto_increment,
+            `roleName` varchar(100) not null
+            );
+        </sql>
+    </changeSet>
+    <changeSet id="15" author="jana">
+        <sql>
+            insert into `approle` (`roleName`) values
+                ('ADMIN'), ('GUEST');
+        </sql>
+    </changeSet>
+    <changeSet id="12.5" author="jana">
+        <sql>
+            create table if not exists `user` (
+            `user_id` integer not null primary key auto_increment,
+            `username` varchar(50),
+            `password` varchar(60),
+            `email` varchar(50),
+            approle_id int,
+            constraint fk__user__approle foreign key (approle_id) references approle(approle_id)
+            )
+        </sql>
+    </changeSet>
+    <changeSet id="12.9" author="jana">
+        <sql>
+            set @adminRoleId := (select approle_id from approle where roleName = 'ADMIN');
+
+            insert into `user` (`username`, `password`, `email`, approle_id)
+                values ('jana',  '{noop}12345', 'jana@gmail.com', @adminRoleId)
+            ;
+        </sql>
+    </changeSet>
 </databaseChangeLog>

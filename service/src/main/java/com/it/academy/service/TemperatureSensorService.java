@@ -54,5 +54,9 @@ public class TemperatureSensorService {
                         .equals(str) || entity.getDevice()
                         .equals(str)).map(this::fromEntity).collect(Collectors.toList());
     }
+
+    public Long getDeviceId(Long sensorId) {
+        return dao.get(TemperatureSensorEntity.class, sensorId).getDevice().getId();
     }
+}
 

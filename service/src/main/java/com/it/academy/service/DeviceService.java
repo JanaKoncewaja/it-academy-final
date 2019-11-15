@@ -42,6 +42,11 @@ public class DeviceService {
         return new Device(entity.getId(), entity.getName(), entity.getIp(), entity.getLocation());
     }
 
+    private DeviceEntity fromDevice(Device device){
+        return new DeviceEntity(device.getId(),device.getName(),device.getIp(),device.getLocation());
+    }
+
+
     public List<Device> getSearchResult(String str) {
         if (str.isEmpty() || str == null) {
             getAll();
@@ -52,4 +57,9 @@ public class DeviceService {
                         .equals(str) || entity.getIp()
                         .equals(str)).map(this::fromEntity).collect(Collectors.toList());
     }
+
+    public void save(Device device){
+        dao.save(fromDevice(device));
+    }
+
 }

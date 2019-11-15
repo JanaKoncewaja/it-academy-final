@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"></link>
@@ -12,7 +13,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>IoT Catalog</title>
   </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
@@ -26,9 +27,8 @@
       <li class="nav-item active">
         <a class="nav-link" href="${pageContext.request.contextPath}/home">Home <span class="sr-only">(current)</span></a>
       </li>
-       <li class="nav-item active">
-              <a class="nav-link" href="${pageContext.request.contextPath}/addProduct">Add product<span class="sr-only">(current)</span></a>
-            </li>
+
+
 
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,9 +40,27 @@
                 <a class="dropdown-item" href="${pageContext.request.contextPath}/catalogOfTemperatureSensorsPage">Temperature sensors catalog</a>
       </div>
     </div>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Sign in</a>
-      </li>
+
+   <sec:authorize access="!isAuthenticated()">
+
+           <li class="nav-item">
+               <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
+           </li>
+   </sec:authorize>
+   <sec:authorize access="isAuthenticated()">
+           <li class="nav-item">
+               <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
+           </li>
+   </sec:authorize>
+<div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 Add product
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/addDevice">Add device</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/addLightOnSensor"> Add light-On sensor</a>
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/addTemperatureSensor"> add temperature sensor</a>
+                  </div>
     </ul>
 
      <form action="${pageContext.request.contextPath}/search" class="form-inline my-2 my-lg-0">
@@ -51,3 +69,4 @@
     </form>
   </div>
 </nav>
+

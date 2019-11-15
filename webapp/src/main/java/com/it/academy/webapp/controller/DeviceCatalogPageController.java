@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @Controller
+
 public class DeviceCatalogPageController {
 
 private static Logger logger = Logger.getLogger("DeviceCatalogPageController");
@@ -28,5 +29,6 @@ private static Logger logger = Logger.getLogger("DeviceCatalogPageController");
         model.addAttribute("devices", devices);
         return "catalogPage";
     }
+
 
 }

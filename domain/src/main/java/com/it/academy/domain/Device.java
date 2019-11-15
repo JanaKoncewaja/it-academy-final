@@ -8,10 +8,10 @@ import java.util.Objects;
 
 public class Device {
 
-    private final Long id;
-    private final String name;
-    private final String ip;
-    private final String location;
+    private Long id;
+    private  String name;
+    private  String ip;
+    private String location;
     private final List<Sensor> sensors = new ArrayList<>(0);
 
     public Device(Long id, String name, String ip, String location) {
@@ -19,6 +19,15 @@ public class Device {
         this.name = name;
         this.ip = ip;
         this.location = location;
+    }
+
+    public Device(String name, String ip, String location) {
+        this.name = name;
+        this.ip = ip;
+        this.location = location;
+    }
+
+    public Device() {
     }
 
     public Long getId() {

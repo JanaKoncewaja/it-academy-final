@@ -20,5 +20,6 @@ public class DeviceDaoTest {
     @Test
     public void getAll() {
         assertNotNull(deviceDao.getAll());
+
     }
 }

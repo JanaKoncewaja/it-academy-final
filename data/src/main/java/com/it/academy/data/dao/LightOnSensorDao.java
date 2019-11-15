@@ -14,6 +14,7 @@ public class LightOnSensorDao extends DaoHibernateImpl<LightOnSensorEntity> impl
 private final Dao<LightOnSensorEntity> dao = new DaoHibernateImpl<>();
 
     public List<LightOnSensorEntity> getAll() {
+
         return dao.getAll("from LightOnSensorEntity", LightOnSensorEntity.class);
     }
 

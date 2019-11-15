@@ -3,10 +3,11 @@ package com.it.academy.data.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
-public class UserEntity implements Serializable {
+public class UserEntity implements Serializable, MarkerInt {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,13 +23,16 @@ public class UserEntity implements Serializable {
     @Column(name = "email")
     private String email;
 
-    public UserEntity() {
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private AppRoleEntity role;
+
+    public Long getId() {
+        return id;
     }
 
-    public UserEntity(String username, String password, String email) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -55,29 +59,24 @@ public class UserEntity implements Serializable {
         this.email = email;
     }
 
+    public AppRoleEntity getRole() {
+        return role;
+    }
+
+    public void setRole(AppRoleEntity role) {
+        this.role = role;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserEntity user = (UserEntity) o;
-        return Objects.equals(id, user.id) &&
-                Objects.equals(username, user.username) &&
-                Objects.equals(password, user.password) &&
-                Objects.equals(email, user.email);
+        UserEntity that = (UserEntity) o;
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, password, email);
-    }
-
-    @Override
-    public String toString() {
-        return "UserEntity{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return Objects.hash(id);
     }
 }

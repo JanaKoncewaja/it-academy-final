@@ -25,7 +25,14 @@ public  class DeviceEntity implements Serializable,MarkerInt {
     public DeviceEntity() {
     }
 
-  public DeviceEntity(String name, String ip, String location) {
+  public DeviceEntity(Long id,String name, String ip, String location) {
+        this.id=id;
+        this.name = name;
+        this.ip = ip;
+        this.location = location;
+    }
+
+    public DeviceEntity(String name, String ip, String location) {
         this.name = name;
         this.ip = ip;
         this.location = location;

@@ -15,14 +15,16 @@
       <th scope="col">Id</th>
       <th scope="col">Name</th>
       <th scope="col">Value</th>
+      <th scope="col">Device</th>
       </tr>
   </thead>
   <tbody>
    <c:forEach var="lightOnSensor" items="${lightOnSensors}">
     <tr>
-      <th scope="row">${lightOnSensor.id}</th>
-      <td><a href="#">${lightOnSensor.name}</a></td>
-
+      <td scope="row">${lightOnSensor.sensor.id}</td>
+      <td>${lightOnSensor.sensor.name}</td>
+      <td>${lightOnSensor.sensor.value}</td>
+      <td>${lightOnSensor.deviceName}</td>
     </tr>
    </c:forEach>
  </tbody>

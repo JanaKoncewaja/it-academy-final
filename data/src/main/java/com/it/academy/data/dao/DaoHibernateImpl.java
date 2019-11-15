@@ -67,7 +67,7 @@ public class DaoHibernateImpl<T extends MarkerInt> implements Dao<T> {
         T obj=null;
         try {
             tr = session.beginTransaction();
-            obj = session.createQuery(sql, clazz).uniqueResult();
+            obj = session.createQuery(sql, clazz).getSingleResult();
             tr.commit();
             session.close();
         } catch (HibernateException e) {

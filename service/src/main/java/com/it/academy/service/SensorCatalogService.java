@@ -36,4 +36,12 @@ public class SensorCatalogService {
 
     public List<TemperatureSensor> getSortedByValueTempSens() { return temperatureSensorService.getSortedByValueTempSens();
     }
+
+    public Long getDeviceIdForTemperatureSensor(Long sensorId) {
+        return temperatureSensorService.getDeviceId(sensorId);
+    }
+
+    public Long getDeviceIdForLightOnSensor(Long sensorId) {
+        return lightOnSensorService.getDeviceId(sensorId);
+    }
 }

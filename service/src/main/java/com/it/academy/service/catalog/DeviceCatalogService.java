@@ -1,8 +1,6 @@
 package com.it.academy.service.catalog;
 
-import com.it.academy.data.dao.Dao;
-import com.it.academy.data.dao.DeviceDao;
-import com.it.academy.data.entity.DeviceEntity;
+
 import com.it.academy.domain.Device;
 import com.it.academy.domain.sensor.LightOnSensor;
 import com.it.academy.domain.sensor.TemperatureSensor;

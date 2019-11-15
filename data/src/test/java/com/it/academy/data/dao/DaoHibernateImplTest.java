@@ -5,6 +5,7 @@ import com.it.academy.data.entity.LightOnSensorEntity;
 import com.it.academy.data.entity.TemperatureSensorEntity;
 import org.hibernate.Session;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class DaoHibernateImplTest {
     private TemperatureSensorEntity temperatureSensorEntity;
 
     @Test
+    @Ignore("Because creates data in DB and doesn't delete it")
     public void save() {
         final Dao<DeviceEntity> deviceDao = new DaoHibernateImpl<>();
         final Long deviceId = deviceDao.save(new DeviceEntity("ItI","iiiuhY7","kitchen"));
@@ -54,6 +56,7 @@ public class DaoHibernateImplTest {
 
 
     @Test
+    @Ignore("Because creates data in DB and doesn't delete it")
     public void get() {
         final Long deviceId = new DaoHibernateImpl<>().save(new DeviceEntity("ItI","iiiuhY7123","kitchen"));
         assertNotNull(deviceId);

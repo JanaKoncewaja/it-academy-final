@@ -17,15 +17,16 @@
       <th scope="col">Id</th>
       <th scope="col">Name</th>
       <th scope="col">Value</th>
-
+      <th scope="col">Device</th>
     </tr>
   </thead>
   <tbody>
    <c:forEach var="temperatureSensor" items="${temperatureSensors}">
     <tr>
-      <th scope="row">${temperatureSensor.id}</th>
-      <td><a href="#">${temperatureSensor.name}</a></td>
-      <td><a href="#">${temperatureSensor.value}</a></td>
+      <th scope="row">${temperatureSensor.sensor.id}</th>
+      <td>${temperatureSensor.sensor.name}</td>
+      <td>${temperatureSensor.sensor.value}</td>
+      <td>${temperatureSensor.deviceName}</td>
     </tr>
    </c:forEach>
  </tbody>

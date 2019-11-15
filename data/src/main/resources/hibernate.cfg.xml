@@ -16,6 +16,8 @@
         <mapping class="com.it.academy.data.entity.AbstractSensorEntity"/>
         <mapping class="com.it.academy.data.entity.LightOnSensorEntity"/>
         <mapping class="com.it.academy.data.entity.TemperatureSensorEntity"/>
+        <mapping class="com.it.academy.data.entity.UserEntity"/>
+        <mapping class="com.it.academy.data.entity.AppRoleEntity"/>
     </session-factory>
 
 </hibernate-configuration>

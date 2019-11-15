@@ -6,14 +6,20 @@ public class User {
 
     private final Long id;
     private final String username;
-    private final String password;
+    private  String password;
     private final String email;
+    private final AppRole role;
 
-    public User(Long id, String username, String password, String email) {
-        this.id = Objects.requireNonNull(id, "id cannot be null");
+    public User(Long id, String username, String password, String email, AppRole role) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
+        this.role = role;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Long getId() {
@@ -30,6 +36,10 @@ public class User {
 
     public String getEmail() {
         return email;
+    }
+
+    public AppRole getRole() {
+        return role;
     }
 
     @Override
@@ -52,6 +62,8 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
+                ", role=" + role +
                 '}';
     }
+
 }
