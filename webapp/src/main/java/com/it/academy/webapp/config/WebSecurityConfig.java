@@ -38,15 +38,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/catalogPage",
                         "/catalogOfLightOnSensorsPage*",
                         "/catalogOfTemperatureSensorsPage*").permitAll()
-                .antMatchers("/addDevice").hasRole("ADMIN")
+                .antMatchers("/addDevice","/addLightOnSensor","/addTemperatureSensor").hasRole("ADMIN")
                 .and()
                 .formLogin().defaultSuccessUrl("/home",true).permitAll()
         .and()
         .csrf().disable();
 
     }
-
-
     @Bean
     @Override
     public UserDetailsService userDetailsService() {

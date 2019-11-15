@@ -29,5 +29,14 @@
    </c:forEach>
  </tbody>
 </table>
-
+<html>
+ <style>
+body {
+  background-image: url('smart.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+</style>
+<html>
 <jsp:include page="footer.jsp"/>

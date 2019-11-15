@@ -6,7 +6,7 @@
 
   <hr class="my-4">
   <p>Welcome to the internet-page of SMART-Home Ind.</p>
-  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+  <a class="btn btn-primary btn-lg" href="/learnMore" role="button">Learn more</a>
 
 
 <html>

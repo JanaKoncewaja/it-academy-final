@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -58,8 +59,13 @@ public class DeviceService {
                         .equals(str)).map(this::fromEntity).collect(Collectors.toList());
     }
 
-    public void save(Device device){
-        dao.save(fromDevice(device));
+    public void save(DeviceEntity device){
+        dao.save(device);
+    }
+
+    public List<Device> getSortedDevices() {
+        return dao.getAll().stream().map(this::fromEntity).sorted(Comparator.comparing(Device::getName)).collect(Collectors.toList());
+
     }
 
 }

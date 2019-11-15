@@ -58,5 +58,9 @@ public class TemperatureSensorService {
     public Long getDeviceId(Long sensorId) {
         return dao.get(TemperatureSensorEntity.class, sensorId).getDevice().getId();
     }
+
+    public void save(TemperatureSensorEntity temperatureSensorEntity) {
+        dao.save(temperatureSensorEntity);
+    }
 }
 

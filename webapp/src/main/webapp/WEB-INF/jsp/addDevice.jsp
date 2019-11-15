@@ -3,11 +3,11 @@
 <form action="${pageContext.request.contextPath}/addDevice" method="POST" >
 
   <div class="form-group">
-    <label for="name">Device Name</label>
+     <font color ="white"> <label for="name">Device Name</label></font>
     <input type="text" name="name" class="form-control" id="name"  placeholder="Enter device name">
   </div>
  <div class="form-group">
-    <label for="ip">Device ip</label>
+      <font color ="white"><label for="ip">Device ip</label></font>
     <input type="text" name="ip" class="form-control" id="ip"  placeholder="Enter device ip">
   </div>
    <div class="form-group">
@@ -18,4 +18,14 @@
  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
+<html>
+ <style>
+body {
+  background-image: url('imge.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+</style>
+<html>
 <jsp:include page="footer.jsp"/>

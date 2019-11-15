@@ -30,5 +30,12 @@ private static Logger logger = Logger.getLogger("DeviceCatalogPageController");
         return "catalogPage";
     }
 
+    @RequestMapping(value = "catalogPage/sortedCatalogPage")
+    public String showSortedDevices(Model model){
+        List<Device> devices = deviceCatalogService.gerSortedDevices();
+        model.addAttribute("devices",devices );
+        return "catalogPage";
+    }
+
 
 }

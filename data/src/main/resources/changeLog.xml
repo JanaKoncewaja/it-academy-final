@@ -17,11 +17,13 @@
             )
         </sql>
     </changeSet>
-    <changeSet id="5.1" author="jana">
+    <changeSet id="5.1.1" author="jana">
         <sql>
             insert into device(name, ip, location) values
                 ('Lamp', '192.168.100.23', 'Kitchen'),
-                ('Laptop', '192.168.100.56', 'Guest Hall')
+                ('Laptop', '192.168.100.56', 'Guest Hall'),
+            ('HMeter', '192.168.100.57', 'Kitchen'),
+            ('EvLamp', '192.168.100.58', 'Bedroom')
         </sql>
     </changeSet>
 
@@ -100,6 +102,15 @@
 
             insert into `user` (`username`, `password`, `email`, approle_id)
                 values ('jana',  '{noop}12345', 'jana@gmail.com', @adminRoleId)
+            ;
+        </sql>
+    </changeSet>
+    <changeSet id="12.9.1" author="jana">
+        <sql>
+            set @adminRoleId := (select approle_id from approle where roleName = 'GUEST');
+
+            insert into `user` (`username`, `password`, `email`, approle_id)
+            values ('dev',  '{noop}54321', 'dev@gmail.com', @adminRoleId)
             ;
         </sql>
     </changeSet>

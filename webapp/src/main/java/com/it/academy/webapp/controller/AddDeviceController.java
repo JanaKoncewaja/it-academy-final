@@ -26,7 +26,7 @@ public class AddDeviceController {
 
 
     @PostMapping
-    public String addNewDevice(@ModelAttribute Device device){
+    public String addNewDevice(@ModelAttribute DeviceEntity device){
         log.info("Adding DEVICE");
         deviceService.save(device);
         return "redirect:/home";

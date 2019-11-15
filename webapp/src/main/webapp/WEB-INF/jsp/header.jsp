@@ -53,14 +53,14 @@
            </li>
    </sec:authorize>
 <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 Add product
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/addDevice">Add device</a>
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/addLightOnSensor"> Add light-On sensor</a>
-                            <a class="dropdown-item" href="${pageContext.request.contextPath}/addTemperatureSensor"> add temperature sensor</a>
-                  </div>
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     Add product
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/addDevice">Add device</a>
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/addLightOnSensor"> Add light-On sensor</a>
+                                <a class="dropdown-item" href="${pageContext.request.contextPath}/addTemperatureSensor"> add temperature sensor</a>
+                      </div>
     </ul>
 
      <form action="${pageContext.request.contextPath}/search" class="form-inline my-2 my-lg-0">

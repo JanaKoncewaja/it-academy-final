@@ -43,4 +43,8 @@ public class DeviceCatalogService {
     public List<Device> searchProduct(String str){
 return deviceService.getSearchResult(str);
     }
+
+    public List<Device> gerSortedDevices() {
+        return deviceService.getSortedDevices();
+    }
 }

@@ -58,5 +58,9 @@ public class LightOnSensorService {
     public Long getDeviceId(Long sensorId) {
         return dao.get(LightOnSensorEntity.class, sensorId).getDevice().getId();
     }
+
+    public void save(LightOnSensorEntity lightOnSensorEntity) {
+        dao.save(lightOnSensorEntity);
+    }
 }
 
